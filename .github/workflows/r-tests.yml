@@ -17,7 +17,13 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages(c("lavaan", "testthat"), repos = "https://cloud.r-project.org")'
+          Rscript -e 'install.packages("lavaan", repos = "https://cloud.r-project.org")'
+          Rscript -e 'install.packages("testthat", repos = "https://cloud.r-project.org")'
+
+      - name: Check installed packages
+        run: |
+          Rscript -e 'library(lavaan)'
+          Rscript -e 'library(testthat)'
 
       - name: Run testthat tests
         run: |
